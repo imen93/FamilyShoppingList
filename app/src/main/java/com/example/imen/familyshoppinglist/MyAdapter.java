@@ -1,52 +1,81 @@
 package com.example.imen.familyshoppinglist;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by imen on 12/12/2016.
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
 private List<String> mList;
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView title, year, genre;
+public class MyViewHolder extends RecyclerView.ViewHolder  {
+    TextView tv1, tv2;
+    ImageView imageView;
 
-    public MyViewHolder(View view) {
-        super(view);
-        title = (TextView) view.findViewById(R.id.title);
+    public MyViewHolder(View itemView) {
+        super(itemView);
+
+        tv1 = (TextView) itemView.findViewById(R.id.list_title);
+        tv2 = (TextView) itemView.findViewById(R.id.list_desc);
+        imageView = (ImageView) itemView.findViewById(R.id.list_avatar);
 
     }
 }
 
-
-    public MyAdapter(List<String> mList) {
+    /*public MyAdapter(List<String> mList) {
         this.mList = mList;
+    }*/
+    ArrayList<String> name ;
+    Context context;
+    LayoutInflater inflater;
+
+    public MyAdapter(Context context,ArrayList<String> name) {
+        this.context = context;
+        this.name=name;
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
+        View v = inflater.inflate(R.layout.my_text_view, parent, false);
 
-        return new MyViewHolder(itemView);
+        MyViewHolder viewHolder = new MyViewHolder(v);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String s = mList.get(position);
-        holder.title.setText(s);
+        holder.tv1.setText(name.get(position));
+        holder.imageView.setOnClickListener(clickListener);
+        holder.imageView.setTag(holder);
     }
+
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            MyViewHolder vholder = (MyViewHolder) v.getTag();
+            int position = vholder.getPosition();
+
+            Toast.makeText(context, "This is position " + position, Toast.LENGTH_LONG).show();
+
+        }
+    };
 
     @Override
     public int getItemCount() {
-        return mList.size();
-    }
-}
+        return name.size();
+    }}

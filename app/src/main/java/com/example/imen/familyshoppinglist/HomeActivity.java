@@ -2,6 +2,7 @@ package com.example.imen.familyshoppinglist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,16 +26,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
    // private FirebaseAuth firebaseAuth;
 
     //view objects
-    private TextView textViewUserEmail;
-    private List<String> mList=new ArrayList<>();
     private RecyclerView recyclerView;
-    private MyAdapter mAdapter;
+    private MyAdapter adapter;
+    ArrayList<String> name ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mList = new ArrayList<String>();
         setContentView(R.layout.activity_home);
+        setTitle("test");    //+user.getEmail()
+        name=new ArrayList<>();
+        name.add("imen");
+        name.add("sisters");
+        name.add("mum");
+        recyclerView= (RecyclerView) findViewById(R.id.recycler_view);
+        adapter=new MyAdapter(this,name);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
 
         //initializing firebase authentication object
       /*  firebaseAuth = FirebaseAuth.getInstance();
@@ -51,27 +59,26 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         //getting current user
        // FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        //initializing views
-        textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
-
-        //displaying logged in user name
-        textViewUserEmail.setText("Welcome ");//+user.getEmail()
 
         // buttonLogout = (Button) findViewById(R.id.buttonLogout);
         //adding listener to button
        // buttonLogout.setOnClickListener(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mList.add("aaaaa");
-        mList.add("bbbbbbbbb");
-        mAdapter = new MyAdapter(mList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
 
 
+
+        //Layout manager for Recycler view
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              name.add("cccccccccccc");
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
