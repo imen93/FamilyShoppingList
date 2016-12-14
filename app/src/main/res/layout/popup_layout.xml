@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customfont="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:drawable/editbox_dropdown_dark_frame"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="@android:drawable/editbox_dropdown_light_frame">
+
+
+            <TextView
+                android:id="@+id/textout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Create a new group"
+                style="@style/Theme.AppCompat.Dialog"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:text="enter Group name"/>
+
+            <EditText
+                    android:id="@+id/groupName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:hint="Group name" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:text="Select memebers"/>
+
+            <Spinner
+                android:id="@+id/popupspinner"
+                android:spinnerMode="dialog"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="add members"/>
+
+    <LinearLayout
+        style="?android:attr/buttonBarButtonStyle"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/create"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="create" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="cancel"
+            style="?android:attr/buttonBarButtonStyle"
+            /></LinearLayout>
+        </LinearLayout>
+
+
+</RelativeLayout>
