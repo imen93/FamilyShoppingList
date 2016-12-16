@@ -1,16 +1,15 @@
 package com.example.imen.familyshoppinglist;
 
-import android.content.Intent;
-import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,14 +17,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by imen on 11/12/2016.
@@ -37,7 +30,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     //view objects
     private RecyclerView recyclerView;
-    private MyAdapter adapter;
+    private GroupAdapter adapter;
     ArrayList<String> name ;
     String[] DayOfWeek = {"Sunday", "Monday", "Tuesday",
             "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -46,11 +39,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         setTitle("test");    //+user.getEmail()
         name=new ArrayList<>();
 
         recyclerView= (RecyclerView) findViewById(R.id.recycler_view);
-        adapter=new MyAdapter(this,name);
+        adapter=new GroupAdapter(this,name);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
 
@@ -155,4 +149,22 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, LoginActivity.class));
         }*/
     }
-}
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.list_item, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_edit:
+            /* DO EDIT */
+                return true;
+            case R.id.action_add:
+            /* DO ADD */
+                return true;
+            case R.id.action_delete:
+            /* DO DELETE */
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }}

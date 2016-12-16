@@ -1,6 +1,7 @@
 package com.example.imen.familyshoppinglist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by imen on 12/12/2016.
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
+public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder>{
 
 private List<String> mList;
 
@@ -34,14 +35,14 @@ public class MyViewHolder extends RecyclerView.ViewHolder  {
     }
 }
 
-    /*public MyAdapter(List<String> mList) {
+    /*public GroupAdapter(List<String> mList) {
         this.mList = mList;
     }*/
     ArrayList<String> name ;
     Context context;
     LayoutInflater inflater;
 
-    public MyAdapter(Context context,ArrayList<String> name) {
+    public GroupAdapter(Context context, ArrayList<String> name) {
         this.context = context;
         this.name=name;
         inflater = LayoutInflater.from(context);

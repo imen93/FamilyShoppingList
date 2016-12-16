@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <item android:id="@+id/action_edit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Edit"
+        android:showAsAction="always">
+
+    </item>
+    <item android:id="@+id/action_add"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="ifRoom"
+        android:showAsAction="ifRoom">
+    </item>
+    <item android:id="@+id/action_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Delete"
+        android:showAsAction="never">
+    </item>
+
+</menu>
